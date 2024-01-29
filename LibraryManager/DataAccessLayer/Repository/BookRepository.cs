@@ -1,19 +1,24 @@
-﻿using System;
-namespace DataAccessLayer.Repository;
+﻿using System.Collections.Generic;
 using BusinessObjects.Entity;
 
-
-public class BookRepository
+namespace DataAccessLayer.Repository
 {
-    
-    public IEnumerable<Book> GetAll()
+    public class BookRepository
     {
-        return new List<Book>(); 
-    }
+        private List<Book> _books = new List<Book>
+        {
+            new Book { Id = 1, Name = "Romance 1", Pages = 100, Type = BookType.Romance, Rate = 5, AuthorId = 1 },
+            new Book { Id = 2, Name = "Fantasy 2", Pages = 150, Type = BookType.Fantasy, Rate = 4, AuthorId = 2 }
+        };
 
-    
-    public Book Get(int id)
-    {
-        return new Book(); 
+        public IEnumerable<Book> GetAll()
+        {
+            return _books;
+        }
+
+        public Book? Get(int id)
+        {
+            return _books.Find(book => book.Id == id);
+        }
     }
 }
