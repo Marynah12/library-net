@@ -1,59 +1,37 @@
-﻿using System;
-using BusinessObjects.Entity;
+﻿using BusinessObjects.Entity;
 using DataAccessLayer.Repository;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Formats.Asn1.AsnWriter;
-using static System.Reflection.Metadata.BlobBuilder;
 
 namespace BusinessLayer.Catalog
 {
-	public class CatalogManager
-	{
-        private BookRepository _bookRepository = new BookRepository();
+    public class CatalogManager : ICatalogManager
+    {
+        private IGenericRepository<Book> _bookRepository;
 
-        public void DisplayCatalog()
-            {
-                List<Book> books = _bookRepository.GetAll().ToList();
-                Console.WriteLine("Voici la liste des livres actuels :");
-                foreach (Book book in books)
-                {
-                    Console.WriteLine(book.Name);
-                }
-            }
-
-        public List<Book> DisplayCatalog(BookType type)
+        public CatalogManager(IGenericRepository<Book> bookRepository)
         {
-            List<Book> books = _bookRepository.GetAll().ToList();
+            _bookRepository = bookRepository;
+        }
 
-            IEnumerable<Book> booksQuery =
-                from book in books
-                where book.Type == type
-                select book;
+        public IEnumerable<Book> DisplayCatalog()
+        {
+            return _bookRepository.GetAll();
+        }
 
-            return books;
+        public IEnumerable<Book> DisplayCatalog(BookType type)
+        {
+            return _bookRepository.GetAll().Where(book => book.Type == type);
         }
 
         public Book FindBook(int id)
-            {
-                Book? book = _bookRepository.Get(id);
-                Console.WriteLine($"Book with ID {book.Id} {book.Name}");
-                return book;
-            }
-
-        public List<Book> GetFantasyBook()
         {
-            List<Book> books = _bookRepository.GetAll().ToList();
+            return _bookRepository.Get(id);
+        }
 
-            IEnumerable<Book> booksQuery =
-                from book in books
-                where book.Type == BookType.Fantasy
-                select book;
-
-            return books;
+        public IEnumerable<Book> GetFantasyBook()
+        {
+            return _bookRepository.GetAll().Where(book => book.Type == BookType.Fantasy);
         }
 
         public Book HighestRate()
@@ -64,6 +42,7 @@ namespace BusinessLayer.Catalog
 
             return book;
         }
-	}
-}
 
+     
+    }
+}

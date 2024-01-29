@@ -5,7 +5,7 @@ namespace DataAccessLayer.Repository
 {
     public class BookRepository
     {
-        private List<Book> _books = new List<Book>
+        private IEnumerable<Book> _books = new List<Book>
         {
             new Book { Id = 1, Name = "Romance 1", Pages = 100, Type = BookType.Romance, Rate = 5, AuthorId = 1 },
             new Book { Id = 2, Name = "Fantasy 2", Pages = 150, Type = BookType.Fantasy, Rate = 4, AuthorId = 2 }
@@ -18,7 +18,9 @@ namespace DataAccessLayer.Repository
 
         public Book? Get(int id)
         {
-            return _books.Find(book => book.Id == id);
+            return _books.ToList().Find(book => book.Id == id);
         }
+
+       
     }
 }

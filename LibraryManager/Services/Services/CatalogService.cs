@@ -8,33 +8,42 @@ using System.Threading.Tasks;
 
 namespace Services.Services
 {
-    public class CatalogService { 
-        private CatalogManager catalogManager = new CatalogManager();
-
-        public void ShowCatalog()
+    public class CatalogService : ICatalogService
+    {
+        public CatalogService(ICatalogManager catalogManager )
         {
-            catalogManager.DisplayCatalog();
+            _catalogManager = catalogManager; 
+        }
+
+
+        private ICatalogManager _catalogManager; 
+
+        public List<Book> ShowCatalog()
+        {
+            return _catalogManager.DisplayCatalog();
         }
 
         public List<Book> ShowCatalog(BookType type)
         {
-            return catalogManager.DisplayCatalog(type);
+            return _catalogManager.DisplayCatalog(type);
         }
 
         public Book FindBook(int id)
         {
-            return catalogManager.FindBook(id);
+            return _catalogManager.FindBook(id);
         }
 
         public List<Book> GetFantasy()
         {
-            return catalogManager.GetFantasyBook();
+            return _catalogManager.GetFantasyBook();
         }
 
         public Book HighestRate()
         {
-            return catalogManager.HighestRate();
+            return _catalogManager.HighestRate();
         } 
 
     }
 }
+
+
