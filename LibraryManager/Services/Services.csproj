@@ -15,4 +15,8 @@
   <ItemGroup>
     <PackageReference Include="System.Linq" Version="4.3.0" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj" />
+    <ProjectReference Include="..\BusinessObjects\BusinessObjects.csproj" />
+  </ItemGroup>
 </Project>

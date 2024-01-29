@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Formats.Asn1.AsnWriter;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace BusinessLayer.Catalog
 {
@@ -33,11 +34,6 @@ namespace BusinessLayer.Catalog
                 where book.Type == type
                 select book;
 
-            //Console.WriteLine($"Voici la liste des livres actuels {books.BookType}");
-            foreach (Book book in booksQuery)
-            {
-                Console.WriteLine(book.Name);
-            }
             return books;
         }
 
@@ -47,6 +43,27 @@ namespace BusinessLayer.Catalog
                 Console.WriteLine($"Book with ID {book.Id} {book.Name}");
                 return book;
             }
+
+        public List<Book> GetFantasyBook()
+        {
+            List<Book> books = _bookRepository.GetAll().ToList();
+
+            IEnumerable<Book> booksQuery =
+                from book in books
+                where book.Type == BookType.Fantasy
+                select book;
+
+            return books;
+        }
+
+        public Book HighestRate()
+        {
+            List<Book> books = _bookRepository.GetAll().ToList();
+
+            Book book = books.OrderByDescending(book => book.Rate).First();
+
+            return book;
+        }
 	}
 }
 

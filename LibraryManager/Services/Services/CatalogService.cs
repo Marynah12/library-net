@@ -16,18 +16,25 @@ namespace Services.Services
             catalogManager.DisplayCatalog();
         }
 
-        public void ShowCatalog(BookType type)
+        public List<Book> ShowCatalog(BookType type)
         {
-            catalogManager.DisplayCatalog(type);
+            return catalogManager.DisplayCatalog(type);
         }
 
-        public void FindBook(int id)
+        public Book FindBook(int id)
         {
-            catalogManager.FindBook(id);
+            return catalogManager.FindBook(id);
         }
 
+        public List<Book> GetFantasy()
+        {
+            return catalogManager.GetFantasyBook();
+        }
 
-
+        public Book HighestRate()
+        {
+            return catalogManager.HighestRate();
+        } 
 
     }
 }
