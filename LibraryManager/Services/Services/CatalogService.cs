@@ -9,24 +9,25 @@ using System.Threading.Tasks;
 namespace Services.Services
 {
     public class CatalogService { 
-        private CatalogManager _catalogManager = new CatalogManager();
+        private CatalogManager catalogManager = new CatalogManager();
 
         public void ShowCatalog()
         {
-            _catalogManager.DisplayCatalog();
+            catalogManager.DisplayCatalog();
         }
 
         public void ShowCatalog(BookType type)
         {
-            _catalogManager.DisplayCatalog(type);
+            catalogManager.DisplayCatalog(type);
         }
 
-
-        public Book FindBook(int id)
+        public void FindBook(int id)
         {
-            return _catalogManager.FindBook(id);
+            catalogManager.FindBook(id);
         }
 
-        
+
+
+
     }
 }
