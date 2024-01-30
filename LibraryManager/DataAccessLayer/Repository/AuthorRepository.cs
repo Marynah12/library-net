@@ -1,25 +1,27 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using BusinessObjects.Entity;
+using Intro;
 
 namespace DataAccessLayer.Repository
 {
     public class AuthorRepository : IGenericRepository<Author>
     {
-        private List<Author> _authors = new List<Author>
-        {
-            new Author { Id = 1, FirstName = "Pierre", LastName = "Dupont"  },
-            new Author { Id = 2, FirstName = "Jack", LastName = "Portel"  }
+        private LibraryContext _context;
 
-        };
+        public AuthorRepository(LibraryContext context)
+        {
+            _context = context;
+        }
 
         public IEnumerable<Author> GetAll()
         {
-            return _authors;
+            return _context.Authors.ToList();
         }
 
         public Author? Get(int id)
         {
-            return _authors.Find(author => author.Id == id);
+            return _context.Authors.Find(id);
         }
     }
 }

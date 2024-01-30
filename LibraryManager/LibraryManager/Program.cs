@@ -1,8 +1,8 @@
-﻿// See https://aka.ms/new-console-template for more information
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Services.Services; 
+using Services.Services;
+using Microsoft.EntityFrameworkCore;
 
 internal class Program
 {
@@ -23,7 +23,9 @@ internal class Program
         return Host.CreateDefaultBuilder()
             .ConfigureServices(services =>
             {
-                
+                services.AddDbContext<LibraryContext>(options =>
+                    options.UseSqlite("Data Source={path};"));
+
             });
     }
 }
