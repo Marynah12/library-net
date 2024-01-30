@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-
+using Services.Services; 
 
 internal class Program
 {
@@ -11,7 +11,10 @@ internal class Program
         var configuration = new ConfigurationBuilder();
 
         var host = CreateHostBuilder(configuration).Build();
-        
+        ICatalogService apiCaller = host.Services.GetRequiredService<ICatalogService>();
+        apiCaller.ShowCatalog();
+
+
         host.Run();
     }
 
