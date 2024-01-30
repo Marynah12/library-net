@@ -3,7 +3,7 @@ using BusinessObjects.Entity;
 
 namespace DataAccessLayer.Repository
 {
-    public class BookRepository
+    public class BookRepository : IGenericRepository<Book>
     {
         private LibraryContext _context;
         public BookRepository(LibraryContext context)

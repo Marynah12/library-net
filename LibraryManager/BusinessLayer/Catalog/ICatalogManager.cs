@@ -13,4 +13,4 @@ namespace BusinessLayer.Catalog
 
         public Book HighestRate();
     }
-}
+} 

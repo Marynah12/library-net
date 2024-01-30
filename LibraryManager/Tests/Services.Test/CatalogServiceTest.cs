@@ -43,9 +43,9 @@ namespace Services.Test
         {
             var expectedBooks = new List<Book>
             {
-                new Book { Id = 1, Name = "F1", Type = BookType.Fantasy, Pages = 22, AuthorId = 1, Rate = 3  },
-                new Book { Id = 2, Name = "F2", Type = BookType.Fantasy, Pages = 55, AuthorId = 1, Rate = 4  },
-                new Book { Id = 3, Name = "F3", Type = BookType.Fantasy, Pages = 211, AuthorId = 2, Rate = 1  }
+                new Book { Id = 1, Name = "F1", Type = BookType.Fantasy, Pages = 22,  Rate = 3  },
+                new Book { Id = 2, Name = "F2", Type = BookType.Fantasy, Pages = 55,  Rate = 4  },
+                new Book { Id = 3, Name = "F3", Type = BookType.Fantasy, Pages = 211, Rate = 1  }
             };
 
             var mockCatalogManager = new Mock<ICatalogManager>();
@@ -61,7 +61,7 @@ namespace Services.Test
         [TestMethod]
         public void HighestRate_Returns_HighestRatedBook()
         {
-            var highestRatedBook = new Book { Id = 1, Name = "F4", Type = BookType.Fantasy, Pages = 223, AuthorId = 1, Rate = 3 };
+            var highestRatedBook = new Book { Id = 1, Name = "F4", Type = BookType.Fantasy, Pages = 223, Rate = 3 };
 
             var mockCatalogManager = new Mock<ICatalogManager>();
             mockCatalogManager.Setup(manager => manager.HighestRate()).Returns(highestRatedBook);
