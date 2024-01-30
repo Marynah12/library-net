@@ -18,12 +18,12 @@ namespace Services.Services
 
         private ICatalogManager _catalogManager; 
 
-        public List<Book> ShowCatalog()
+        public IEnumerable<Book> ShowCatalog()
         {
             return _catalogManager.DisplayCatalog();
         }
 
-        public List<Book> ShowCatalog(BookType type)
+        public IEnumerable<Book> ShowCatalog(BookType type)
         {
             return _catalogManager.DisplayCatalog(type);
         }
@@ -33,7 +33,7 @@ namespace Services.Services
             return _catalogManager.FindBook(id);
         }
 
-        public List<Book> GetFantasy()
+        public IEnumerable<Book> GetFantasy()
         {
             return _catalogManager.GetFantasyBook();
         }

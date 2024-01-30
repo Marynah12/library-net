@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using BusinessObjects.Entity;
-using Intro;
 
 namespace DataAccessLayer.Repository
 {

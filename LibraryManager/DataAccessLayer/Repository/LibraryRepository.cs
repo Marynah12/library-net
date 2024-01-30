@@ -5,18 +5,25 @@ namespace DataAccessLayer.Repository
 {
     public class LibraryRepository
     {
-   
+
+        private LibraryContext _context;
+
+        public LibraryRepository(LibraryContext context)
+        {
+            _context = context;
+        }
+
         public IEnumerable<Library> GetAll()
         {
-           
-            return new List<Library>(); 
+
+            return _context.Libraries.ToList();
         }
 
 
-        public Library Get(int id)
+        public Library? Get(int id)
         {
-          
-            return new Library(); 
+
+            return _context.Libraries.Find(id);
         }
     }
 }
