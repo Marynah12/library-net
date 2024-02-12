@@ -42,5 +42,17 @@ namespace LibraryManager.Hosting.Controllers
             var topRatedBook = _catalogService.HighestRate();
             return topRatedBook;
         }
+
+        [HttpPost("book/add")]
+        public void AddBook([FromBody] Book book)
+        {
+            _catalogService.AddBook(book);
+        }
+
+        [HttpDelete("book/delete/{id}")]
+        public void DeleteBook(int id)
+        {
+            _catalogService.DeleteBook(id);
+        }
     }
 }

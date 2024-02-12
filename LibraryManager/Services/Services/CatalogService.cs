@@ -41,7 +41,17 @@ namespace Services.Services
         public Book? HighestRate()
         {
             return _catalogManager.HighestRate();
-        } 
+        }
+
+        public void AddBook(Book book)
+        {
+            _catalogManager.AddBook(book);
+        }
+
+        public void DeleteBook(int id)
+        {
+            _catalogManager.DeleteBook(id);
+        }
 
     }
 }

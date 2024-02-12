@@ -22,5 +22,22 @@ namespace DataAccessLayer.Repository
         {
             return _context.Authors.Find(id);
         }
+
+        public void Add(Author author)
+        {
+            _context.Authors.Add(author);
+            _context.SaveChanges();
+        }
+
+        public void Delete(int id)
+        {
+            var author = Get(id);
+            if (author == null)
+            {
+                throw new InvalidOperationException($"Author not found.");
+            }
+            _context.Authors.Remove(author);
+            _context.SaveChanges();
+        }
     }
 }

@@ -11,9 +11,9 @@ namespace DataAccessLayer.Repository
 
     {
         IEnumerable<T> GetAll();
-
         T Get(int id);
-        //rajouter les add / update / delete etc
+        void Add(T book);
+        void Delete(int id);
     }
 }
 

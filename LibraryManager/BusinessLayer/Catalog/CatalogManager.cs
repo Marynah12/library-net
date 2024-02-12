@@ -45,6 +45,14 @@ namespace BusinessLayer.Catalog
             return book;
         }
 
-     
+        public void AddBook(Book book)
+        {
+            _bookRepository.Add(book);
+        }
+
+        public void DeleteBook(int id)
+        {
+            _bookRepository.Delete(id);
+        }
     }
 }

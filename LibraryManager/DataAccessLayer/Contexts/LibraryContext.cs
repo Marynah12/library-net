@@ -16,9 +16,7 @@ public class LibraryContext : DbContext
     {
         modelBuilder.Entity<Book>().ToTable("book");
         modelBuilder.Entity<Author>().ToTable("Authors");
-        modelBuilder.Entity<Library>().ToTable("Libraries");
-
-            
+        modelBuilder.Entity<Library>().ToTable("Libraries");   
      }
         
 }

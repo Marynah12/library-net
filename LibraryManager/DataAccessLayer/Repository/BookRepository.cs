@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Net;
 using BusinessObjects.Entity;
 
 namespace DataAccessLayer.Repository
@@ -21,7 +22,21 @@ namespace DataAccessLayer.Repository
             return _context.Books.Find(id);
         }
 
-        
-       
+        public void Add(Book book)
+        {
+            _context.Books.Add(book);
+            _context.SaveChanges();
+        }
+
+        public void Delete(int id)
+        {
+            var book = Get(id);
+            if (book == null)
+            {
+                throw new InvalidOperationException($"Book not found.");
+            }
+            _context.Books.Remove(book);
+            _context.SaveChanges();
+        }
     }
 }

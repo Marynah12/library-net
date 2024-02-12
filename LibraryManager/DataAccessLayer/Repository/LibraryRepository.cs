@@ -25,5 +25,22 @@ namespace DataAccessLayer.Repository
 
             return _context.Libraries.Find(id);
         }
+
+        public void Add(Library library)
+        {
+            _context.Libraries.Add(library);
+            _context.SaveChanges();
+        }
+
+        public void Delete(int id)
+        {
+            var library = Get(id);
+            if (library == null)
+            {
+                throw new InvalidOperationException($"Library not found.");
+            }
+            _context.Libraries.Remove(library);
+            _context.SaveChanges();
+        }
     }
 }
