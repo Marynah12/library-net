@@ -11,7 +11,7 @@ namespace Services.Test
     public class CatalogServiceTest
     {
         [TestMethod]
-        public void GetAllBooks_Returns_Books()
+        public void GetAllBooksReturnsBooks()
         {
             var mockCatalogManager = new Mock<ICatalogManager>();
             mockCatalogManager.Setup(manager => manager.DisplayCatalog()).Returns(new List<Book>());
@@ -24,7 +24,7 @@ namespace Services.Test
         }
 
         [TestMethod]
-        public void GetBookById_Returns_Book()
+        public void GetBookByIdReturnsBook()
         {
             int bookId = 1;
             var mockCatalogManager = new Mock<ICatalogManager>();
@@ -39,9 +39,9 @@ namespace Services.Test
         }
 
         [TestMethod]
-        public void GetFantasy_Returns_FantasyBooks()
+        public void GetFantasyReturnsFantasyBooks()
         {
-            var expectedBooks = new List<Book>
+            var testBooks = new List<Book>
             {
                 new Book { Id = 1, Name = "F1", Type = BookType.Fantasy, Pages = 22,  Rate = 3  },
                 new Book { Id = 2, Name = "F2", Type = BookType.Fantasy, Pages = 55,  Rate = 4  },
@@ -49,17 +49,17 @@ namespace Services.Test
             };
 
             var mockCatalogManager = new Mock<ICatalogManager>();
-            mockCatalogManager.Setup(manager => manager.GetFantasyBook()).Returns(expectedBooks);
+            mockCatalogManager.Setup(manager => manager.GetFantasyBook()).Returns(testBooks);
 
             var catalogService = new CatalogService(mockCatalogManager.Object);
 
             var result = catalogService.GetFantasy();
 
-            CollectionAssert.AreEqual(expectedBooks, result.ToList());
+            CollectionAssert.AreEqual(testBooks, result.ToList());
         }
 
         [TestMethod]
-        public void HighestRate_Returns_HighestRatedBook()
+        public void HighestRateReturnsHighestRatedBook()
         {
             var highestRatedBook = new Book { Id = 1, Name = "F4", Type = BookType.Fantasy, Pages = 223, Rate = 3 };
 

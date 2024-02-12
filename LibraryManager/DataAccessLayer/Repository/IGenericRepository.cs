@@ -10,9 +10,10 @@ namespace DataAccessLayer.Repository
     public interface IGenericRepository<T> where T : AEntity
 
     {
-        public IEnumerable<T> GetAll();
+        IEnumerable<T> GetAll();
 
-        public T Get(int id);
+        T Get(int id);
+        //rajouter les add / update / delete etc
     }
 }
 

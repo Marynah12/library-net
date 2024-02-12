@@ -17,4 +17,5 @@ public class LibraryContext : DbContext
         modelBuilder.Entity<Book>().ToTable("book");
         
     }
+
 }

@@ -11,7 +11,6 @@ namespace DataAccessLayer.Repository
             _context = context;
         }
 
-
         public IEnumerable<Book> GetAll()
         {
             return _context.Books.ToList();

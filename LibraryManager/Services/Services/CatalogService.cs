@@ -28,7 +28,7 @@ namespace Services.Services
             return _catalogManager.DisplayCatalog(type);
         }
 
-        public Book FindBook(int id)
+        public Book? FindBook(int id)
         {
             return _catalogManager.FindBook(id);
         }
