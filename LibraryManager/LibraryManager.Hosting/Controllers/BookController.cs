@@ -10,9 +10,9 @@ namespace LibraryManager.Hosting.Controllers
     [Route("[controller]")]
     public class BookController : ControllerBase
     {
-        private readonly CatalogService _catalogService;
+        private readonly ICatalogService _catalogService;
 
-        public BookController(CatalogService catalogService)
+        public BookController(ICatalogService catalogService)
         {
             _catalogService = catalogService;
         }
@@ -24,30 +24,22 @@ namespace LibraryManager.Hosting.Controllers
         }
 
         [HttpGet("book/{id}")]
-        public ActionResult<Book> GetBookById(int id)
+        public Book? GetBookById(int id)
         {
             var book = _catalogService.FindBook(id);
-            if (book == null)
-            {
-                return NotFound();
-            }
             return book;
         }
-        // A faire
-        //[HttpGet("books/{type}")]
-        //public IEnumerable<Book> GetBooksByType(string type)
-        //{
-        //    return _catalogService.GetFantasy(type);
-        //}
+  
+        [HttpGet("books/fantasy")]
+        public IEnumerable<Book> GetBooksByType()
+        {
+            return _catalogService.GetFantasy();
+        }
 
         [HttpGet("book/topRatedBook")]
-        public ActionResult<Book> GetTopRatedBook()
+        public Book? GetTopRatedBook()
         {
             var topRatedBook = _catalogService.HighestRate();
-            if (topRatedBook == null)
-            {
-                return NotFound();
-            }
             return topRatedBook;
         }
     }

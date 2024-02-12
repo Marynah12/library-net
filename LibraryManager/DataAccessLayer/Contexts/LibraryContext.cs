@@ -15,7 +15,11 @@ public class LibraryContext : DbContext
     protected override void OnModelCreating( ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Book>().ToTable("book");
-        
-    }
+        modelBuilder.Entity<Author>().ToTable("Authors");
+        modelBuilder.Entity<Library>().ToTable("Libraries");
 
+            
+     }
+        
 }
+

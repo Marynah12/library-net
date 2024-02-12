@@ -38,7 +38,7 @@ namespace Services.Services
             return _catalogManager.GetFantasyBook();
         }
 
-        public Book HighestRate()
+        public Book? HighestRate()
         {
             return _catalogManager.HighestRate();
         } 

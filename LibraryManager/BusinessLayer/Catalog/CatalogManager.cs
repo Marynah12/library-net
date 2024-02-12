@@ -21,11 +21,9 @@ namespace BusinessLayer.Catalog
 
         public IEnumerable<Book> DisplayCatalog(BookType type)
         {
-
             return from book in _bookRepository.GetAll()
                    where book.Type == type
                     select book; 
-
         }
 
         public Book FindBook(int id)
