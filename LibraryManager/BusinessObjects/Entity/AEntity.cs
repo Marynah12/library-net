@@ -8,6 +8,6 @@ namespace BusinessObjects.Entity
 {
     public abstract class AEntity
     {
-        public int Id { get; set; }
+        public int Id { get; set; } 
     }
 }

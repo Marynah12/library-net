@@ -48,9 +48,25 @@ namespace Services.Services
             _catalogManager.AddBook(book);
         }
 
+
         public void DeleteBook(int id)
         {
             _catalogManager.DeleteBook(id);
+        }
+
+        public void UpdateBook(int id, Book book)
+        {
+            _catalogManager.UpdateBook(id, book);
+        }
+
+        public void UpdateAuthor(int id, Author author)
+        {
+            _catalogManager.UpdateAuthor(id, author);
+        }
+
+        public void UpdateLibrary(int id, Library library)
+        {
+            _catalogManager.UpdateLibrary(id, library);
         }
 
     }

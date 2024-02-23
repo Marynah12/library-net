@@ -39,5 +39,19 @@ namespace DataAccessLayer.Repository
             _context.Authors.Remove(author);
             _context.SaveChanges();
         }
+
+        public void Update(int id, Author author)
+        {
+            var searchAuthor = Get(id);
+            if (searchAuthor == null)
+            {
+                throw new InvalidOperationException($"Author not found.");
+            }
+
+            searchAuthor.FirstName = author.FirstName;
+            searchAuthor.LastName = author.LastName;
+           
+            _context.SaveChanges();
+        }
     }
 }

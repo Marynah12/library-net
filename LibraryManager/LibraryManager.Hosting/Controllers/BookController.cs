@@ -54,5 +54,13 @@ namespace LibraryManager.Hosting.Controllers
         {
             _catalogService.DeleteBook(id);
         }
+
+        [HttpDelete("book/update/{id}")]
+        public void UpdateBook([FromBody] Book book, int id)
+        {
+            _catalogService.UpdateBook(id,book);
+        }
+
+
     }
 }
