@@ -1,4 +1,4 @@
-FLAMENT MARINA - Git : Marynah12 - Discord : marynah
+FLAMENT MARINA - Git : Marynah12 - Discord : marynah  
 LANGREZ MARINE - Git : woorzz - Discord : worrz
 
 
