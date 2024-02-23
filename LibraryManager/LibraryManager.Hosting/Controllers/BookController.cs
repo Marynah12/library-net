@@ -44,10 +44,17 @@ namespace LibraryManager.Hosting.Controllers
         }
 
         [HttpPost("book/add")]
-        public void AddBook([FromBody] Book book)
+        public IActionResult AddBook([FromBody] Book book)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             _catalogService.AddBook(book);
+            return Ok(); 
         }
+
 
         [HttpDelete("book/delete/{id}")]
         public void DeleteBook(int id)
@@ -55,7 +62,7 @@ namespace LibraryManager.Hosting.Controllers
             _catalogService.DeleteBook(id);
         }
 
-        [HttpDelete("book/update/{id}")]
+        [HttpPut("book/update/{id}")]
         public void UpdateBook([FromBody] Book book, int id)
         {
             _catalogService.UpdateBook(id,book);

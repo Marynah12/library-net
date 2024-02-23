@@ -59,15 +59,8 @@ namespace BusinessLayer.Catalog
             _bookRepository.Update(id, book);
         }
 
-        public void UpdateAuthor(int id, Author author)
-        {
-            _bookRepository.Update(id, author);
-        }
 
-        public void UpdateLibrary(int id, Library library) { 
-        
-            _bookRepository.Update(id, library);
-        }
+
 
 
     }

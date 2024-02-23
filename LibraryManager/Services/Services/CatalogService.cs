@@ -59,15 +59,7 @@ namespace Services.Services
             _catalogManager.UpdateBook(id, book);
         }
 
-        public void UpdateAuthor(int id, Author author)
-        {
-            _catalogManager.UpdateAuthor(id, author);
-        }
-
-        public void UpdateLibrary(int id, Library library)
-        {
-            _catalogManager.UpdateLibrary(id, library);
-        }
+      
 
     }
 }

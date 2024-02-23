@@ -14,9 +14,8 @@ namespace DataAccessLayer.Repository
         T Get(int id);
         void Add(T book);
         void Delete(int id);
-        void Update(int id, Book book);
-        void Update(int id, Author author);
-        void Update(int id, Library library);
+        void Update(int id, T book);
+        
 
 
     }
